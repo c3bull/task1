@@ -1,5 +1,7 @@
 import './App.css'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import LoanApplication from "./components/LoanApplication.jsx";
+import LoanConfirmation from "./components/LoanConfirmation.jsx";
 
 function App() {
 
@@ -7,7 +9,8 @@ function App() {
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<Home/>}/>
+                    <Route path='/' element={<LoanApplication/>}/>
+                    <Route path='/thank-you' element={<LoanConfirmation/>}/>
                 </Routes>
             </BrowserRouter>
         </>
