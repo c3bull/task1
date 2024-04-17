@@ -10,7 +10,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<LoanApplication/>}/>
-                    <Route path='/thank-you' element={<LoanConfirmation/>}/>
+                    <Route path='/your-application' element={<LoanConfirmation/>}/>
                 </Routes>
             </BrowserRouter>
         </>

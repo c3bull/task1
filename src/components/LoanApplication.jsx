@@ -57,7 +57,7 @@ export default function LoanApplication() {
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
-                    navigate("/thank-you", {
+                    navigate("/your-application", {
                         state: {
                             values: values,
                             businessRun: businessRun,
@@ -120,8 +120,8 @@ export default function LoanApplication() {
                         <div className='flex justify-center items-center flex-col mt-10 gap-4'>
                             <p className='text-center text-red-500'>*najedź na czerwoną kropkę, aby zobaczyć błąd wypełnienia,<br/>wszystkie pola są obowiązkowe</p>
                             <button type="submit" onClick={() => console.log(errors)}
-                                    className='bg-[#729fcf] hover:bg-blue-500 duration-150 text-center px-4 py-2 font-semibold rounded-[16px] uppercase '>
-                                <span>Potwierdź zamówienie</span>
+                                    className='bg-[#37679B] text-white hover:bg-[#244E7B] duration-150 text-center px-4 py-2 font-semibold rounded-[16px] uppercase '>
+                                <span>Złóż wniosek</span>
                             </button>
                         </div>
                     </Form>
