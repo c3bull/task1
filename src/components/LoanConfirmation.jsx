@@ -19,7 +19,7 @@ export default function LoanConfirmation() {
                 <p>Wnioskowana kwota kredytu: <span className='font-bold'>{location.state ? location.state.values.loanAmount : <span>Nie podano</span>}</span></p>
 
                 {location.state && location.state.businessRun &&
-                    <div className='flex flex-col mt-2 pt-2 border-t'>
+                    <div className='flex flex-col mt-2 pt-2 border-t gap-2'>
                         <p>Adres: <span className='font-bold'>{location.state ? location.state.values.address : <span>Nie podano</span>}</span></p>
                         <p>Kod pocztowy: <span className='font-bold'>{location.state ? location.state.values.zipcode : <span>Nie podano</span>}</span></p>
                         <p>Miasto: <span className='font-bold'>{location.state ? location.state.values.city : <span>Nie podano</span>}</span></p>
