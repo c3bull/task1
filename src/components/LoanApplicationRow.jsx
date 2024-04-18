@@ -1,7 +1,18 @@
 import {Field} from "formik";
+import {useEffect} from "react";
 
 // eslint-disable-next-line react/prop-types
 export default function LoanApplicationRow({selection, placeholder, name, fieldType, number, input, label, inputSetter, checkbox, errors, diffStyle}) {
+
+    const focusInput = () => {
+        const textField = document.getElementById("inputname");
+        textField.focus();
+            textField.blur();
+    }
+
+    useEffect(()=>{
+        focusInput()
+    },[])
 
     return (
         <div>
@@ -18,6 +29,7 @@ export default function LoanApplicationRow({selection, placeholder, name, fieldT
                            type={fieldType ? fieldType : "text"}
                            className='focus:outline-0 pl-2'
                            placeholder={placeholder}
+                           id={'input'+name}
                            />
                 }
                 {selection &&

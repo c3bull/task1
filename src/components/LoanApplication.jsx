@@ -8,8 +8,8 @@ import LoanApplicationHeader from "./LoanApplicationHeader.jsx";
 import {useNavigate} from 'react-router-dom';
 
 export default function LoanApplication() {
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [residentStatus, setResidentStatus] = useState("NIE")
@@ -22,10 +22,11 @@ export default function LoanApplication() {
     const [address, setAddress] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [city, setCity] = useState('')
+    const [showErrors, setShowErrors] = useState(false)
 
     const formSchema = Yup.object().shape({
         name: Yup.string().required('Imię powinno zawierać między 2 a 30 liter').matches(/^[A-Za-z]{2,30}$/, "Imię powinno zawierać między 2 a 30 liter"),
-        surname: Yup.string().required('Naziwsko powinno zawierać między 2 a 50 liter').matches(/^[A-Za-z-]{2,50}$/, "Naziwsko powinno zawierać między 2 a 50 liter"),
+        surname: Yup.string().required('Nazwisko powinno zawierać między 2 a 50 liter').matches(/^[A-Za-z-]{2,50}$/, "Naziwsko powinno zawierać między 2 a 50 liter"),
         residentStatus: '',
         citizenship: Yup.string().required('Obywatelstwo powinno zawierać między 2 a 20 liter').matches(/^[A-Za-z]{2,20}$/, "Obywatelstwo powinno zawierać między 2 a 20 liter"),
         pesel: Yup.string().required('PESEL powinien składać się z 11 cyfr').matches(/^\d{11}$/, "PESEL powinien składać się z 11 cyfr"),
@@ -117,10 +118,31 @@ export default function LoanApplication() {
                                                     diffStyle='grid-cols-[40px_minmax(140px,_3fr)_2fr]'/>
                             </div>
                         }
-                        <div className='flex justify-center items-center flex-col mt-10 gap-4'>
-                            <p className='text-center text-red-500'>*najedź na czerwoną kropkę, aby zobaczyć błąd wypełnienia,<br/>wszystkie pola są obowiązkowe</p>
-                            <button type="submit" onClick={() => console.log(errors)}
-                                    className='bg-[#37679B] text-white hover:bg-[#244E7B] duration-150 text-center px-4 py-2 font-semibold rounded-[16px] uppercase '>
+                        <div className='flex justify-center items-center flex-col mt-10 gap-2'>
+                            <p className='text-center text-blue-600'>*najedź na czerwoną kropkę, aby zobaczyć błąd wypełnienia,<br/>wszystkie pola są obowiązkowe</p>
+                            {!showErrors && <p>lub</p>}
+                            <div>
+                                <button onClick={()=>setShowErrors(prevState => !prevState)} className='mt-2'>
+                                    {showErrors ? <span className='bg-red-400 text-white hover:bg-red-500 duration-150 text-center px-4 py-2 font-semibold rounded-[16px] uppercase'>Ukryj błędy</span> :
+                                    <span className='bg-red-400 text-white hover:bg-red-500 duration-150 text-center px-4 py-2 font-semibold rounded-[16px] uppercase'>Pokaż błędy</span>}
+                                </button>
+                            </div>
+                            {showErrors && <div className='w-full max-w-[600px] pt-4'>
+                                {errors.name && <p className='text-black'>• {errors.name}</p>}
+                                {errors.surname && <p className='text-black'>• {errors.surname}</p>}
+                                {errors.residentStatus && <p className='text-black'>• {errors.residentStatus}</p>}
+                                {errors.citizenship && <p className='text-black'>• {errors.citizenship}</p>}
+                                {errors.pesel && <p className='text-black'>• {errors.pesel}</p>}
+                                {errors.birthdayDate && <p className='text-black'>• {errors.birthdayDate}</p>}
+                                {errors.businessRun && <p className='text-black'>• {errors.businessRun}</p>}
+                                {errors.bankName && <p className='text-black'>• {errors.bankName}</p>}
+                                {errors.loanAmount && <p className='text-black'>• {errors.loanAmount}</p>}
+                                {errors.address && <p className='text-black'>• {errors.address}</p>}
+                                {errors.zipcode && <p className='text-black'>• {errors.zipcode}</p>}
+                                {errors.city && <p className='text-black'>• {errors.city}</p>}
+                        </div>}
+                            <button type="submit" onClick={() => setShowErrors(true)}
+                                    className='mt-6 bg-[#37679B] text-white hover:bg-[#244E7B] duration-150 text-center px-4 py-2 min-w-[200px] min-h-[48px] font-semibold rounded-[16px] uppercase '>
                                 <span>Złóż wniosek</span>
                             </button>
                         </div>

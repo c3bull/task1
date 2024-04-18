@@ -7,7 +7,6 @@ export default function LoanConfirmation() {
         <>
             {location.state ?
                 <div>
-
                     <h1 className='text-black text-[32px] font-bold text-center pb-10'>Dziękujemy za wypełnienie wniosku
                         o kredyt!</h1>
                     <h2 className='text-[24px] pb-4 font-semibold uppercase text-center'>Twoje dane:</h2>
