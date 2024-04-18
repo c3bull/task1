@@ -41,6 +41,8 @@ export default function LoanApplication() {
 
     return (
         <>
+            <div className='flex flex-col gap-4'>
+            <h1 className='text-black text-[24px]'>Wniosek o kredyt</h1>
             <Formik
                 initialValues={{
                     name: '',
@@ -149,6 +151,7 @@ export default function LoanApplication() {
                     </Form>
                 )}
             </Formik>
+            </div>
         </>
     )
 }
